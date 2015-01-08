@@ -10,6 +10,7 @@
 		480D85351A5F151A0075FA89 /* RACAlamofire.h in Headers */ = {isa = PBXBuildFile; fileRef = 480D85341A5F151A0075FA89 /* RACAlamofire.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		480D853B1A5F151A0075FA89 /* RACAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 480D852F1A5F151A0075FA89 /* RACAlamofire.framework */; };
 		480D85421A5F151A0075FA89 /* RACAlamofireTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480D85411A5F151A0075FA89 /* RACAlamofireTests.swift */; };
+		480D854C1A5F15CF0075FA89 /* RACAlamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480D854B1A5F15CF0075FA89 /* RACAlamofire.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		480D853A1A5F151A0075FA89 /* RACAlamofireTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RACAlamofireTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		480D85401A5F151A0075FA89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		480D85411A5F151A0075FA89 /* RACAlamofireTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RACAlamofireTests.swift; sourceTree = "<group>"; };
+		480D854B1A5F15CF0075FA89 /* RACAlamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACAlamofire.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				480D85341A5F151A0075FA89 /* RACAlamofire.h */,
+				480D854B1A5F15CF0075FA89 /* RACAlamofire.swift */,
 				480D85321A5F151A0075FA89 /* Supporting Files */,
 			);
 			path = RACAlamofire;
@@ -209,6 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				480D854C1A5F15CF0075FA89 /* RACAlamofire.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +323,7 @@
 		480D85461A5F151A0075FA89 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -328,12 +333,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		480D85471A5F151A0075FA89 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
