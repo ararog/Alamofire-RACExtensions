@@ -13,4 +13,7 @@ Pod::Spec.new do |s|
 
   s.source_files = 'RACAlamofire/*.swift'
 
+  s.dependency 'Alamofire', '~> 1.1.0'
+  s.dependency 'ReactiveCocoa', '~> 2.0'
+
 end
