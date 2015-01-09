@@ -1,0 +1,6 @@
+[submodule "External/Alamofire"]
+	path = External/Alamofire
+	url = https://github.com/Alamofire/Alamofire.git
+[submodule "External/ReactiveCocoa"]
+	path = External/ReactiveCocoa
+	url = https://github.com/ReactiveCocoa/ReactiveCocoa.git
