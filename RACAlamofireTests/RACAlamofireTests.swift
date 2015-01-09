@@ -8,6 +8,8 @@
 
 import UIKit
 import XCTest
+import Alamofire
+import RACAlamofire
 
 class RACAlamofireTests: XCTestCase {
     
@@ -21,15 +23,55 @@ class RACAlamofireTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+    func testValidation200() {
+
+        let expectation = expectationWithDescription("http://www.google.com should return 200 status code")
+        
+        var signal:RACSignal = Alamofire.request(.GET, "http://www.google.com")
+            .validate(statusCode: 200..<300)
+            .rac_response()
+        
+        signal.subscribeNext { (value) -> Void in
+            expectation.fulfill()
+        }
+        
+        waitForExpectationsWithTimeout(10) { (error) in
+            XCTAssertNil(error, "\(error)")
+        }
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
+    func testValidationJSON() {
+        
+        let expectation = expectationWithDescription("http://jsonip.com/ must return JSON data")
+        
+        var signal:RACSignal = Alamofire.request(.GET, "http://jsonip.com")
+            .validate(contentType: ["application/json"])
+            .rac_responseJSON()
+        
+        signal.subscribeNext { (value) -> Void in
+            expectation.fulfill()
+            println(value)
+        }
+        
+        waitForExpectationsWithTimeout(10) { (error) in
+            XCTAssertNil(error, "\(error)")
+        }
+    }   
+    
+    func testValidationNotJSON() {
+        
+        let expectation = expectationWithDescription("http://www.google.com")
+        
+        var signal:RACSignal = Alamofire.request(.GET, "http://www.google.com")
+            .validate(contentType: ["application/json"])
+            .rac_response()
+        
+        signal.subscribeError { (error) -> Void in
+            expectation.fulfill()
+        }
+        
+        waitForExpectationsWithTimeout(10) { (error) in
+            XCTAssertNil(error, "\(error)")
         }
     }
     

@@ -33,28 +33,24 @@ private func URLRequest(method: Alamofire.Method, URL: URLStringConvertible) -> 
     return mutableURLRequest
 }
 
-// MARK: - Request
+// MARK: - ReactiveCocoa
 
-/**
-Creates a request using the shared manager instance for the specified method, URL string, parameters, and parameter encoding.
+extension Request {
 
-:param: method The HTTP method.
-:param: URLString The URL string.
-:param: parameters The parameters. `nil` by default.
-:param: encoding The parameter encoding. `.URL` by default.
-
-:returns: The created request.
-*/
-
-public func request(method: Alamofire.Method, URLString: URLStringConvertible, parameters: [String: AnyObject]? = nil, encoding: ParameterEncoding = .URL) -> RACSignal {
+    /**
+    Creates a ReactiveCoca signal for standard response.
     
     
-    return RACSignal.createSignal({ subscriber in
+    :returns: The created signal.
+    */
+    
+    public func rac_response() -> RACSignal {
         
-        request(encoding.encode(URLRequest(method, URLString), parameters: parameters).0)
-            .response({ (request, response, anyObject, error) -> Void in
-        
-                if(error != nil) {
+        return RACSignal.createSignal({ subscriber in
+            
+            self.response({ (request, response, anyObject, error) -> Void in
+                    
+                if(error == nil) {
                     subscriber.sendNext(response)
                     subscriber.sendCompleted()
                 }
@@ -63,7 +59,62 @@ public func request(method: Alamofire.Method, URLString: URLStringConvertible, p
                     subscriber.sendError(error)
                 }
             })
-
-        return nil
-    })
+            
+            return nil
+        })
+    }
+    
+    /**
+    Creates a ReactiveCoca signal for string response.
+    
+    
+    :returns: The created signal.
+    */
+    
+    public func rac_responseString() -> RACSignal {
+        
+        return RACSignal.createSignal({ subscriber in
+            
+            self.responseString({ (request, response, string, error) -> Void in
+                
+                if(error == nil) {
+                    subscriber.sendNext(string)
+                    subscriber.sendCompleted()
+                }
+                else {
+                    
+                    subscriber.sendError(error)
+                }
+            })
+            
+            return nil
+        })
+    }
+    
+    /**
+    Creates a ReactiveCoca signal for JSON response.
+    
+    
+    :returns: The created signal.
+    */
+    
+    public func rac_responseJSON() -> RACSignal {
+        
+        return RACSignal.createSignal({ subscriber in
+            
+            self.responseJSON({ (request, response, JSON, error) -> Void in
+                
+                if(error == nil) {
+                    subscriber.sendNext(JSON)
+                    subscriber.sendCompleted()
+                }
+                else {
+                    
+                    subscriber.sendError(error)
+                }
+            })
+            
+            return nil
+        })
+    }
 }
