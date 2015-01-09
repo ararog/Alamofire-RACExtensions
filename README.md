@@ -38,11 +38,14 @@ pod 'RACAlamofire', :git => 'https://github.com/ararog/Alamofire-RACExtensions',
 ### Creating a signal for a Request
 
 ```swift
+import Alamofire
 import RACAlamofire
 
-var signal:RACSignal = RACAlamofire.request(.GET, "http://httpbin.org/get")
-
-signal.subscribeNext({ (response) -> Void in
-            println(response)
-})
+var signal:RACSignal = Alamofire.request(.GET, "http://www.google.com")
+       .validate(statusCode: 200..<300)
+	.rac_response()
+        
+signal.subscribeNext { (value) -> Void in
+	println(value)
+}
 ```
