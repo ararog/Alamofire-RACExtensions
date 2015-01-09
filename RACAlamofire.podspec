@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name = 'Alamofire-RACExtensions'
+  s.name = 'RACAlamofire'
   s.version = '0.0.1'
   s.license = 'MIT'
   s.summary = 'ReactiveCocoa extensions for Alamofire'
