@@ -13,6 +13,4 @@ Pod::Spec.new do |s|
 
   s.source_files = 'RACAlamofire/*.swift'
 
-  s.dependency 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git'
-  s.dependency 'ReactiveCocoa', '~> 2.0'
 end
