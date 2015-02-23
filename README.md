@@ -28,7 +28,7 @@ platform :ios, '8.0'
 
 pod 'ReactiveCocoa', '~> 2.4'
 pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire', :tag => '1.1.3'
-pod 'RACAlamofire', :git => 'https://github.com/ararog/Alamofire-RACExtensions', :tag => '0.0.4'
+pod 'RACAlamofire', :git => 'https://github.com/ararog/Alamofire-RACExtensions', :tag => '0.0.6'
 ```
 
 ---
