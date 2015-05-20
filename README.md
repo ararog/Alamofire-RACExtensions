@@ -12,7 +12,7 @@ Currently you can only subscribe to request signal
 
 ## Communication
 
-- If you **need help**, use [Stack Overflow](http://stackoverflow.com/questions/tagged/alamofire). (Tag 'racalamofire')
+- If you **need help**, use [Stack Overflow](http://stackoverflow.com/questions/tagged/racalamofire). (Tag 'racalamofire')
 - If you'd like to **ask a general question**, use [Stack Overflow](http://stackoverflow.com/questions/tagged/racalamofire).
 - If you **found a bug**, open an issue.
 - If you **have a feature request**, open an issue.
@@ -22,7 +22,7 @@ Currently you can only subscribe to request signal
 
 ### Cocoapods
 
-``` 
+```
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 
@@ -44,7 +44,7 @@ import RACAlamofire
 var signal:RACSignal = Alamofire.request(.GET, "http://www.google.com")
        .validate(statusCode: 200..<300)
 	.rac_response()
-        
+
 signal.subscribeNext { (value) -> Void in
 	println(value)
 }
